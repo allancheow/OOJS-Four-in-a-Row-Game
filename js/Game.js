@@ -102,7 +102,7 @@ class Game {
      * @param   {Object}  target -  Targeted space for dropped token.
      */
     updateGameState(token, target) {
-        target.mark(target);
+        target.mark(token);
         if (!this.checkForWin(target)) {
             this.switchPlayers();
             if (this.active.checkTokens()) {
