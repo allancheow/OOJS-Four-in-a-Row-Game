@@ -86,7 +86,7 @@ class Game {
         target.mark(token);
         if (!this.checkForWin(target)) {
             this.switchPlayers();
-            if (this.active.checkTokens()) {
+            if (this.activePlayer.checkTokens()) {
                 this.activePlayer.activeToken.drawHTMLToken();
                 this.ready = true;
             } else {
