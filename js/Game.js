@@ -69,8 +69,50 @@ class Game {
         }
 
         if (targetSpace !== null) {
+            const game = this;
             game.ready = false;
-            activeToken.drop(targetSpace);
+            activeToken.drop(targetSpace, function() {
+                game.updateGameState(activeToken, targetSpace);
+            });
+        }
+    }
+
+    /** 
+     * Switches active player. 
+     */
+    switchPlayers() {
+        for ( let player of this.players ) {
+            player.active = player.active === true ? false : true;
+        }
+    }
+
+    /** 
+     * Displays game over message.
+     * @param {string} message - Game over message.      
+     */
+    gameOver(message) {
+        const gameOver = document.querySelector(`#game-over`);
+        gameOver.style.display = `block`;
+        gameOver.textContent = message;
+    }
+
+    /** 
+     * Updates game state after token is dropped. 
+     * @param   {Object}  token  -  The token that's being dropped.
+     * @param   {Object}  target -  Targeted space for dropped token.
+     */
+    updateGameState(token, target) {
+        target.mark(target);
+        if (!this.checkForWin(target)) {
+            this.switchPlayers();
+            if (this.active.checkTokens()) {
+                this.activePlayer.activeToken.drawHTMLToken();
+                this.ready = true;
+            } else {
+                this.gameOver(`No more tokens...`);
+            }
+        } else {
+            this.gameOver(`${target.owner.name} wins!`);
         }
     }
 
