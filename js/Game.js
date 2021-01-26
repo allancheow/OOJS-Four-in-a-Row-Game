@@ -46,7 +46,7 @@ class Game {
             } else if ( e.key === `ArrowRight` ) {
                 this.activePlayer.activeToken.moveRight(this.board.columns);
             } else if ( e.key === `ArrowDown` ) {
-                // drop token
+                this.playToken();
             }
         }
 
@@ -62,7 +62,7 @@ class Game {
         let targetColumn = spaces[activeToken.columnLocation];
         let targetSpace = null;
 
-        for (space of targetColumn) {
+        for (let space of targetColumn) {
             if (space.token === null) {
                 targetSpace = space;
             }
