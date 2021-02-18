@@ -14,11 +14,7 @@ class Space {
      * @return  {(null|Object)} Returns null or the owner object of the space's associated token.
      */
     get owner() {
-        if ( this.token !== null ) {
-            return this.token.owner;
-        } else {
-            return null;
-        }
+        return this.token !== null ? this.token.owner : null;
     }
 
     /** 

@@ -41,13 +41,9 @@ class Game {
      */
     handleKeydown(e) {
         if (this.ready) {
-            if ( e.key === `ArrowLeft` ) {
-                this.activePlayer.activeToken.moveLeft();
-            } else if ( e.key === `ArrowRight` ) {
-                this.activePlayer.activeToken.moveRight(this.board.columns);
-            } else if ( e.key === `ArrowDown` ) {
-                this.playToken();
-            }
+            e.key === `ArrowLeft` ? this.activePlayer.activeToken.moveLeft()
+            : e.key === `ArrowRight` ? this.activePlayer.activeToken.moveRight(this.board.columns)
+            : e.key === `ArrowDown` ? this.playToken() : null;
         }
 
     }
@@ -63,9 +59,7 @@ class Game {
         let targetSpace = null;
 
         for (let space of targetColumn) {
-            if (space.token === null) {
-                targetSpace = space;
-            }
+            space.token === null ? targetSpace = space : null;
         }
 
         if (targetSpace !== null) {
