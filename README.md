@@ -16,3 +16,6 @@ Files provided by @treehouse
 
 File build by me (@allancheow)
 - js (folder)
+
+# Demo
+[Link](https://allancheow.github.io/OOJS-Four-in-a-Row-Game/)
